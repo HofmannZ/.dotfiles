@@ -20,6 +20,8 @@ HOMEBREW_PACKAGES=(
   nvm
   typescript
   kubectl
+  gpg
+  pinentry-mac
 )
 brew install ${HOMEBREW_PACKAGES[@]}
 
@@ -50,7 +52,6 @@ HOMEBREW_CASKS=(
   fliqlo
   google-chrome
   google-cloud-sdk
-  gpg-suite
   keybase
   slack
   transmission
