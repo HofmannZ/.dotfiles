@@ -17,11 +17,11 @@ chown -R $(whoami) ~/.gnupg/
 find ~/.gnupg -type f -exec chmod 600 {} \;
 find ~/.gnupg -type d -exec chmod 700 {} \;
 
-echo "pinentry-program /usr/localbin/pinentry-mac"/ > ~/.gnupg/gpg-agent.conf
+echo "pinentry-program /usr/local/bin/pinentry-mac" > ~/.gnupg/gpg-agent.conf
 
 keybase pgp export -q $KEY_ID | gpg --import
 keybase pgp export -q $KEY_ID --secret | gpg --allow-secret-key-import --import
 
-git config --global gpg.program $(which gpg)
 git config --global user.signingkey $KEY_ID
 git config --global commit.gpgsign true
+git config --global gpg.program $(which gpg)

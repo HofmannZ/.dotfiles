@@ -20,7 +20,7 @@ HOMEBREW_PACKAGES=(
   nvm
   typescript
   kubectl
-  gpg
+  gnupg
   pinentry-mac
 )
 brew install ${HOMEBREW_PACKAGES[@]}
