@@ -1,3 +1,5 @@
+export PATH="/usr/local/sbin:$PATH"
+
 eval "$(starship init zsh)"
 
 if type brew &>/dev/null; then
