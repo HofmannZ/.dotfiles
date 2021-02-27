@@ -39,3 +39,9 @@ You shoud try to run:
 ```sh
 compaudit | xargs chmod g-w
 ```
+
+In case gems are out of date:
+
+```
+sudo gem update --system -n /usr/local/bin && sudo gem update -n /usr/local/bin
+```
