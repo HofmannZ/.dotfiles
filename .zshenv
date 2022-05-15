@@ -21,3 +21,6 @@ export PATH="/usr/local/sbin:$PATH"
 
 # gpg
 export GPG_TTY=$(tty)
+
+# google cloud sdk
+export CLOUDSDK_PYTHON_SITEPACKAGES=1

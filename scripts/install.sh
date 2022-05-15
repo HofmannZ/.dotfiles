@@ -18,6 +18,7 @@ HOMEBREW_PACKAGES=(
   hashicorp/tap/packer
   hashicorp/tap/terraform
   hashicorp/tap/vault
+  kubectl
   nvm
   pinentry-mac
   starship
