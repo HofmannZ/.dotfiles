@@ -43,11 +43,13 @@ echo "Installing casks..."
 HOMEBREW_CASKS=(
   adobe-creative-cloud
   android-studio
+  bloomrpc
   docker
   font-fira-code
   google-chrome
   google-cloud-sdk
   keybase
+  tableplus
   transmission
   visual-studio-code
   vlc
@@ -67,37 +69,14 @@ nvm install 16
 
 echo "Configuring GPG..."
 mkdir ~/.gnupg
-
 chown -R $(whoami) ~/.gnupg/
-
 find ~/.gnupg -type f -exec chmod 600 {} \;
 find ~/.gnupg -type d -exec chmod 700 {} \;
-
 echo "pinentry-program $(brew --prefix)/bin/pinentry-mac" > ~/.gnupg/gpg-agent.conf
-
 echo RELOADAGENT | gpg-connect-agent
 
-echo "Configuring default editor..."
-code --install-extension apollographql.vscode-apollo
-code --install-extension dart-code.dart-code
-code --install-extension dart-code.flutter
-code --install-extension dbaeumer.vscode-eslint
-code --install-extension editorconfig.editorconfig
-code --install-extension esbenp.prettier-vscode
-code --install-extension johnpapa.vscode-peacock
-code --install-extension ms-azuretools.vscode-docker
-code --install-extension streetsidesoftware.code-spell-checker
-code --install-extension wayou.vscode-todo-highlight
-code --install-extension wesbos.theme-cobalt2
-code --install-extension wix.vscode-import-cost
-code --install-extension wmaurer.change-case
-code --install-extension zxh404.vscode-proto3
-
 echo "Configuring MacOS..."
-# Show hidden files
-defaults write com.apple.finder AppleShowAllFiles -bool true
+defaults write com.apple.finder AppleShowAllFiles -bool true  # Show hidden files.
+defaults write com.apple.Dock showhidden -bool true           # Dim hidden app icons in the Dock.
 
-# Dim hidden app icons in the Dock
-defaults write com.apple.Dock showhidden -bool true
-
-echo "Done!"
+echo "Done! 🚀"

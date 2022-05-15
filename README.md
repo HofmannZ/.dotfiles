@@ -18,7 +18,15 @@ Run the `install.sh` script list this:
 ./scripts/install.sh
 ```
 
-The setup Keybase using providing chained proof. Once setup, find the public PGP fingerprint by running:
+In VS code press `Command + Shift + P` and search for install `code` in path.
+
+Next, you can configure some extensions:
+
+```sh
+./scripts/setup_editor.sh
+```
+
+Then, setup Keybase providing chained proof. Once setup, find the public PGP fingerprint by running:
 
 ```sh
 keybase pgp list
