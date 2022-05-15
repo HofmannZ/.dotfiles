@@ -1,32 +1,29 @@
-#! /bin/zsh
+#!/usr/bin/env zsh
 
 echo "Creating folders..."
-[[ ! -d ~/.zsh ]] && mkdir ~/.zsh
 [[ ! -d ~/Projects ]] && mkdir ~/Projects
+[[ ! -d ~/Projects/github.com ]] && mkdir ~/Projects/github.com
 
 if test ! $(which brew); then
   echo "Installing Homebrew..."
-  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
-
-echo "Updating Homebrew..."
-brew update
 
 echo "Installing Homebrew packages..."
 HOMEBREW_PACKAGES=(
-  starship
-  zsh-completions
   git
-  nvm
-  typescript
-  kubectl
   gnupg
-  pinentry-mac
-  hashicorp/tap/vault
   hashicorp/tap/consul
   hashicorp/tap/nomad
-  hashicorp/tap/terrafrom
   hashicorp/tap/packer
+  hashicorp/tap/terraform
+  hashicorp/tap/vault
+  nvm
+  pinentry-mac
+  starship
+  zsh
+  zsh-completions
+  zsh-syntax-highlighting
 )
 brew install ${HOMEBREW_PACKAGES[@]}
 
@@ -36,46 +33,49 @@ git config --global user.email "zino@hofmann.amsterdam"
 git config --global credential.helper osxkeychain
 git config --global color.ui auto
 
+echo "Configuring NVM..."
+mkdir ~/.nvm
+
 echo "Tapping fonts..."
 brew tap homebrew/cask-fonts
-
-echo "Install fonts..."
-HOMEBREW_FONTS=(
-  font-fira-code
-)
-brew install --cask ${HOMEBREW_FONTS[@]}
-
-echo "Tapping casks..."
-brew tap homebrew/cask
 
 echo "Installing casks..."
 HOMEBREW_CASKS=(
   adobe-creative-cloud
   android-studio
-  dashlane
   docker
-  fanny
-  fliqlo
+  font-fira-code
   google-chrome
   google-cloud-sdk
   keybase
-  sketch
-  slack
   transmission
-  vagrant
   visual-studio-code
   vlc
-  zeplin
 )
 brew install --cask ${HOMEBREW_CASKS[@]}
 
 echo "Copying ZSH config..."
+cp .zshenv ~/.zshenv
 cp .zshrc ~/.zshrc
-cp .zsh/aliases.zsh ~/.zsh/aliases.zsh
-cp .zsh/history.zsh ~/.zsh/history.zsh
 
 echo "Source ZSH config..."
+source ~/.zshenv
 source ~/.zshrc
+
+echo "Instaling Node.js..."
+nvm install 16
+
+echo "Configuring GPG..."
+mkdir ~/.gnupg
+
+chown -R $(whoami) ~/.gnupg/
+
+find ~/.gnupg -type f -exec chmod 600 {} \;
+find ~/.gnupg -type d -exec chmod 700 {} \;
+
+echo "pinentry-program $(brew --prefix)/bin/pinentry-mac" > ~/.gnupg/gpg-agent.conf
+
+echo RELOADAGENT | gpg-connect-agent
 
 echo "Configuring default editor..."
 code --install-extension apollographql.vscode-apollo
@@ -87,7 +87,6 @@ code --install-extension esbenp.prettier-vscode
 code --install-extension johnpapa.vscode-peacock
 code --install-extension ms-azuretools.vscode-docker
 code --install-extension streetsidesoftware.code-spell-checker
-code --install-extension wakatime.vscode-wakatime
 code --install-extension wayou.vscode-todo-highlight
 code --install-extension wesbos.theme-cobalt2
 code --install-extension wix.vscode-import-cost

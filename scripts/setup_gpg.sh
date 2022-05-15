@@ -1,4 +1,4 @@
-#! /bin/zsh
+#!/usr/bin/env zsh
 
 KEY_ID=$1
 
@@ -11,13 +11,6 @@ then
   echo "$ ./setup_gpg.sh key-id"
   exit 1;
 fi
-
-chown -R $(whoami) ~/.gnupg/
-
-find ~/.gnupg -type f -exec chmod 600 {} \;
-find ~/.gnupg -type d -exec chmod 700 {} \;
-
-echo "pinentry-program /usr/local/bin/pinentry-mac" > ~/.gnupg/gpg-agent.conf
 
 keybase pgp export -q $KEY_ID | gpg --import
 keybase pgp export -q $KEY_ID --secret | gpg --allow-secret-key-import --import
