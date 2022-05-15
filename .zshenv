@@ -24,3 +24,4 @@ export GPG_TTY=$(tty)
 
 # google cloud sdk
 export CLOUDSDK_PYTHON_SITEPACKAGES=1
+export USE_GKE_GCLOUD_AUTH_PLUGIN=True
