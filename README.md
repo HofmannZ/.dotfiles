@@ -1,6 +1,6 @@
 # Dotfiles
 
-Dotfiles to backup, restore, and sync my prefs and settings.
+Dotfiles to backup, restore, and sync my preferences and settings.
 
 ## How to use
 
@@ -32,7 +32,7 @@ Then, setup Keybase providing chained proof. Once setup, find the public PGP fin
 keybase pgp list
 ```
 
-Then run the gpg setup scipt providing the PGP fingerprint:
+(optional) Run the gpg setup script providing the PGP fingerprint:
 
 ```sh
 ./scripts/setup_gpg.sh 74432C545A2B88C97E7A02548EE0CAC87C95D82F
