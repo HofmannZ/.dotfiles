@@ -18,6 +18,10 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 
+alias cdh='cd ~/Projects/github.com/HofmannZ'
+alias cdz='cd ~/Projects/github.com/zino-hofmann'
+alias cda='cd ~/Projects/github.com/Stichting-Adriaan-van-Royen'
+
 # grep
 alias grep='grep --color=auto'
 
