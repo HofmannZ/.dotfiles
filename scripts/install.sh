@@ -45,6 +45,7 @@ HOMEBREW_CASKS=(
   adobe-creative-cloud
   android-studio
   bloomrpc
+  cloudflare-warp
   docker
   font-fira-code
   google-chrome
