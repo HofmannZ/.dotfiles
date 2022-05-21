@@ -44,6 +44,7 @@ echo "Installing casks..."
 HOMEBREW_CASKS=(
   adobe-creative-cloud
   android-studio
+  balenaetcher
   bloomrpc
   cloudflare-warp
   docker
@@ -51,6 +52,7 @@ HOMEBREW_CASKS=(
   google-chrome
   google-cloud-sdk
   keybase
+  raspberry-pi-imager
   tableplus
   transmission
   visual-studio-code
