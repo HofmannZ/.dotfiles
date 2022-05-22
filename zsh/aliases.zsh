@@ -25,9 +25,10 @@ alias cda='cd ~/Projects/github.com/Stichting-Adriaan-van-Royen'
 # grep
 alias grep='grep --color=auto'
 
-# npm
-alias ns='npm run start'
-alias nci='npm run clean:install'
+# pnpm
+alias ni='pnpm install'
+alias nd='pnpm dev'
+alias ns='pnpm start'
 
 # yarn
 alias yd='yarn dev'
