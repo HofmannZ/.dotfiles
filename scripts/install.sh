@@ -21,6 +21,7 @@ HOMEBREW_PACKAGES=(
   kubectl
   nvm
   pinentry-mac
+  pnpm
   starship
   zsh
   zsh-completions
