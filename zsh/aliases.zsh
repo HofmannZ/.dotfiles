@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
 # dotfiles
-alias updot='~/.dotfiles/scripts/update.sh'
+alias dotup='~/.dotfiles/scripts/update.sh'
 
 # homebrew
 alias brewup='brew update; brew upgrade; brew cleanup; brew doctor'
