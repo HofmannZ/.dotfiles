@@ -6,7 +6,7 @@ export DOTFILES="$HOME/.dotfiles"
 
 # editor
 export EDITOR="vim"
-export VISUAL="code"
+export VISUAL="vim"
 
 # timezone
 export TZ=UTC
