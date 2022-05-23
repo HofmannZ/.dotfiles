@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-echo "Configuring default editor..."
+echo "🎨 Configuring default editor..."
 code --install-extension apollographql.vscode-apollo
 code --install-extension dart-code.dart-code
 code --install-extension dart-code.flutter
