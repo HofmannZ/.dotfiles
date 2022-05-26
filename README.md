@@ -42,6 +42,22 @@ Yeah, thats my [public PGP fingerprint](https://keybase.io/hofmannz), check it o
 
 That's it 🚀!
 
+## Flutter setup
+
+1. Launch Xcode.
+
+2. Install the developer tools.
+
+3. Run: `sudo xcode-select --switch /Applications/Xcode.app/Contents/Developer`.
+
+4. Launch Android studio.
+
+5. Install the SDK command-line tools.
+
+6. Setup and AVD.
+
+7. Run `flutter doctor --android-licenses`.
+
 ## Trouble shooting
 
 If you get the following question on startup:

@@ -26,6 +26,16 @@ export GPG_TTY=$(tty)
 export CLOUDSDK_PYTHON_SITEPACKAGES=1
 export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 
+# Android Configuration
+export ANDROID_HOME=~/Library/Android/sdk
+PATH=$PATH:$ANDROID_HOME/build-tools
+PATH=$PATH:$ANDROID_HOME/platform-tools
+PATH=$PATH:$ANDROID_HOME/tools
+PATH=$PATH:$ANDROID_HOME/tools/bin/
+
+# ruby - need to make sure that use the homebrew ruby, not the system one
+export PATH="/usr/local/opt/ruby/bin:$PATH"
+
 # colors
 export DEFAULT_COLOR="\033[39m"
 export RED_COLOR="\\033[91m"

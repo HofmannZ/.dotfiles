@@ -11,6 +11,7 @@ fi
 
 echo "📦 Installing Homebrew packages..."
 HOMEBREW_PACKAGES=(
+  cocoapods
   git
   gnupg
   hashicorp/tap/consul
@@ -49,6 +50,7 @@ HOMEBREW_CASKS=(
   bloomrpc
   cloudflare-warp
   docker
+  flutter
   font-fira-code
   google-chrome
   google-cloud-sdk
