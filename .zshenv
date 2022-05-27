@@ -22,6 +22,10 @@ export PATH="/usr/local/sbin:$PATH"
 # gpg
 export GPG_TTY=$(tty)
 
+# pnpm
+export PNPM_HOME="$HOME/Library/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+
 # google cloud sdk
 export CLOUDSDK_PYTHON_SITEPACKAGES=1
 export USE_GKE_GCLOUD_AUTH_PLUGIN=True
