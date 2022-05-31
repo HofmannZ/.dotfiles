@@ -11,7 +11,6 @@ fi
 
 echo "📦 Installing Homebrew packages..."
 HOMEBREW_PACKAGES=(
-  cocoapods
   git
   gnupg
   hashicorp/tap/consul

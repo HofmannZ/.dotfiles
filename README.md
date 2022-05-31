@@ -44,11 +44,11 @@ That's it 🚀!
 
 ## Flutter setup
 
-1. Launch Xcode.
+1. Install Xcode.
 
-2. Install the developer tools.
+2. Run: `sudo xcode-select --switch /Applications/Xcode.app/Contents/Developer; sudo xcodebuild -runFirstLaunch; sudo xcodebuild -license`.
 
-3. Run: `sudo xcode-select --switch /Applications/Xcode.app/Contents/Developer`.
+3. Run: `sudo gem install cocoapods`
 
 4. Launch Android studio.
 
