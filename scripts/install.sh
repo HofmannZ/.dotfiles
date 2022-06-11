@@ -24,6 +24,7 @@ HOMEBREW_PACKAGES=(
   pnpm
   starship
   zsh
+  zsh-autosuggestions
   zsh-completions
   zsh-syntax-highlighting
 )
@@ -78,11 +79,11 @@ mkdir ~/.gnupg
 chown -R $(whoami) ~/.gnupg/
 find ~/.gnupg -type f -exec chmod 600 {} \;
 find ~/.gnupg -type d -exec chmod 700 {} \;
-echo "pinentry-program $(brew --prefix)/bin/pinentry-mac" > ~/.gnupg/gpg-agent.conf
+echo "pinentry-program $(brew --prefix)/bin/pinentry-mac" >~/.gnupg/gpg-agent.conf
 echo RELOADAGENT | gpg-connect-agent
 
 echo "🖥 Configuring MacOS..."
-defaults write com.apple.finder AppleShowAllFiles -bool true  # Show hidden files.
-defaults write com.apple.Dock showhidden -bool true           # Dim hidden app icons in the Dock.
+defaults write com.apple.finder AppleShowAllFiles -bool true # Show hidden files.
+defaults write com.apple.Dock showhidden -bool true          # Dim hidden app icons in the Dock.
 
 echo "\n🚀 ${GREEN_COLOR}Done!${DEFAULT_COLOR}"
