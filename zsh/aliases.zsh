@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
 # dotfiles
-alias dotup='~/.dotfiles/scripts/update.sh'
+alias dotup='. ~/.dotfiles/scripts/update.sh'
 
 # homebrew
 alias brewup='brew update; brew upgrade; brew cleanup; brew doctor'
@@ -11,7 +11,7 @@ alias kap='kubectl apply -f'
 alias kde='kubectl delete -f'
 
 # ls
-alias ls='ls -G' 
+alias ls='ls -G'
 
 # folder
 alias ..='cd ..'
