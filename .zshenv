@@ -12,9 +12,9 @@ export VISUAL="vim"
 export TZ=UTC
 
 # zsh
-export HISTFILE="$HOME/.zhistory"       # History filepath
-export HISTSIZE=10000                   # Maximum events for internal history
-export SAVEHIST=10000                   # Maximum events in history file
+export HISTFILE="$HOME/.zhistory" # History filepath
+export HISTSIZE=10000             # Maximum events for internal history
+export SAVEHIST=10000             # Maximum events in history file
 
 # homebrew
 export PATH="/usr/local/sbin:$PATH"

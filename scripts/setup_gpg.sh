@@ -4,12 +4,11 @@ KEY_ID=$1
 
 if (
   [ -z "${KEY_ID}" ]
-)
-then
+); then
   echo "The key ID should be provided as a cli argument."
   echo "Usage:"
   echo "$ ./setup_gpg.sh key-id"
-  exit 1;
+  exit 1
 fi
 
 keybase pgp export -q $KEY_ID | gpg --import
