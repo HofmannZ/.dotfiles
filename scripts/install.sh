@@ -20,7 +20,6 @@ HOMEBREW_PACKAGES=(
   hashicorp/tap/terraform
   hashicorp/tap/vault
   kubectl
-  nvm
   pinentry-mac
   pnpm
   starship
@@ -37,8 +36,8 @@ git config --global user.email "zino@hofmann.amsterdam"
 git config --global credential.helper osxkeychain
 git config --global color.ui auto
 
-echo "📦 Configuring NVM..."
-mkdir ~/.nvm
+echo "📦 Instaling Node.js..."
+pnpm env use --global lts
 
 echo "📰 Tapping fonts..."
 brew tap homebrew/cask-fonts
@@ -71,9 +70,6 @@ cp .zshrc ~/.zshrc
 echo "💾 Source ZSH config..."
 source ~/.zshenv
 source ~/.zshrc
-
-echo "📦 Instaling Node.js..."
-nvm install 16
 
 echo "🔑 Configuring GPG..."
 mkdir ~/.gnupg
