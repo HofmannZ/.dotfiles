@@ -29,6 +29,7 @@ alias grep='grep --color=auto'
 alias ni='pnpm install'
 alias nd='pnpm dev'
 alias ns='pnpm start'
+alias nv='(){ pnpm env use --global $1; }' # usage: 'nv 16' or 'nv lts'
 
 # yarn
 alias yd='yarn dev'

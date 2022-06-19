@@ -21,7 +21,6 @@ HOMEBREW_PACKAGES=(
   hashicorp/tap/vault
   kubectl
   pinentry-mac
-  pnpm
   starship
   zsh
   zsh-autosuggestions
@@ -35,6 +34,9 @@ git config --global user.name "Zino Hofmann"
 git config --global user.email "zino@hofmann.amsterdam"
 git config --global credential.helper osxkeychain
 git config --global color.ui auto
+
+echo "📦 Instaling PNPM..."
+curl -fsSL https://get.pnpm.io/install.sh | sh -
 
 echo "📦 Instaling Node.js..."
 pnpm env use --global lts
