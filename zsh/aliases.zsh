@@ -7,7 +7,7 @@ alias dotup='. ~/.dotfiles/scripts/update.sh'
 alias brewup='brew update; brew upgrade; brew cleanup; brew doctor'
 
 # system
-alias sysup='dotup && brewup && pnpm env use --global lts'
+alias sysup='dotup && mas upgrade && brewup && pnpm env use --global lts'
 
 # kubernetes
 alias kap='kubectl apply -f'
