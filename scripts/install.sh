@@ -20,6 +20,7 @@ HOMEBREW_PACKAGES=(
   hashicorp/tap/terraform
   hashicorp/tap/vault
   kubectl
+  mas
   pinentry-mac
   starship
   zsh

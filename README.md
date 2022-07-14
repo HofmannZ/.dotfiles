@@ -18,6 +18,12 @@ Run the `install.sh` script list this:
 ./scripts/install.sh
 ```
 
+Next, sign into the App Store app and run:
+
+```sh
+./scripts/setup_mac_apps.sh
+```
+
 In VS code press `Command + Shift + P` and search for install `code` in path.
 
 Next, you can configure some extensions:
@@ -44,19 +50,17 @@ That's it 🚀!
 
 ## Flutter setup
 
-1. Install Xcode.
+1. Run: `sudo xcode-select --switch /Applications/Xcode.app/Contents/Developer; sudo xcodebuild -runFirstLaunch; sudo xcodebuild -license`.
 
-2. Run: `sudo xcode-select --switch /Applications/Xcode.app/Contents/Developer; sudo xcodebuild -runFirstLaunch; sudo xcodebuild -license`.
+2. Run: `sudo gem install cocoapods`
 
-3. Run: `sudo gem install cocoapods`
+3. Launch Android studio.
 
-4. Launch Android studio.
+4. Install the SDK command-line tools.
 
-5. Install the SDK command-line tools.
+5. Setup and AVD.
 
-6. Setup and AVD.
-
-7. Run `flutter doctor --android-licenses`.
+6. Run `flutter doctor --android-licenses`.
 
 ## Trouble shooting
 
