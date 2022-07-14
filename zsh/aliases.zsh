@@ -6,6 +6,9 @@ alias dotup='. ~/.dotfiles/scripts/update.sh'
 # homebrew
 alias brewup='brew update; brew upgrade; brew cleanup; brew doctor'
 
+# system
+alias sysup='dotup && brewup && pnpm env use --global lts'
+
 # kubernetes
 alias kap='kubectl apply -f'
 alias kde='kubectl delete -f'
@@ -26,9 +29,10 @@ alias cda='cd ~/Projects/github.com/Stichting-Adriaan-van-Royen'
 alias grep='grep --color=auto'
 
 # pnpm
-alias ni='pnpm install'
-alias nd='pnpm dev'
-alias ns='pnpm start'
+alias pni='pnpm install'
+alias pnd='pnpm dev'
+alias pns='pnpm start'
+alias pnx='(){ pnpm dlx $@; }'
 alias nv='(){ pnpm env use --global $1; }' # usage: 'nv 16' or 'nv lts'
 
 # yarn
