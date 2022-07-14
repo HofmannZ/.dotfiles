@@ -48,6 +48,14 @@ Yeah, thats my [public PGP fingerprint](https://keybase.io/hofmannz), check it o
 
 That's it 🚀!
 
+## Keep your system up to date
+
+To update your system you can run the following command for anywhere:
+
+```sh
+sysup
+```
+
 ## Flutter setup
 
 1. Run: `sudo xcode-select --switch /Applications/Xcode.app/Contents/Developer; sudo xcodebuild -runFirstLaunch; sudo xcodebuild -license`.
