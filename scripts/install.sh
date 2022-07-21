@@ -74,6 +74,9 @@ echo "💾 Source ZSH config..."
 source ~/.zshenv
 source ~/.zshrc
 
+echo "🔎 Configuring Google Cloud SDK..."
+gcloud components install gke-gcloud-auth-plugin
+
 echo "🔑 Configuring GPG..."
 mkdir ~/.gnupg
 chown -R $(whoami) ~/.gnupg/
