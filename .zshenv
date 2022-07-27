@@ -38,12 +38,16 @@ export CLOUDSDK_PYTHON_SITEPACKAGES=1
 export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 # google cloud sdk end
 
+# java configuration
+export JAVA_HOME="/Applications/Android Studio.app/Contents/jre/Contents/Home"
+# java configuration end
+
 # android configuration
 export ANDROID_HOME=~/Library/Android/sdk
-PATH=$PATH:$ANDROID_HOME/build-tools
-PATH=$PATH:$ANDROID_HOME/platform-tools
-PATH=$PATH:$ANDROID_HOME/tools
-PATH=$PATH:$ANDROID_HOME/tools/bin/
+export PATH=$PATH:$ANDROID_HOME/build-tools
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/tools/bin/
 # android configuration end
 
 # ruby - need to make sure that use the homebrew ruby, not the system one
