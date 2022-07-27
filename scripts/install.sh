@@ -23,6 +23,7 @@ HOMEBREW_PACKAGES=(
   mas
   pinentry-mac
   starship
+  stripe/stripe-cli/stripe
   zsh
   zsh-autosuggestions
   zsh-completions
