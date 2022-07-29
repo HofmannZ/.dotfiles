@@ -39,7 +39,10 @@ export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 # google cloud sdk end
 
 # java configuration
-export JAVA_HOME="/Applications/Android Studio.app/Contents/jre/Contents/Home"
+export JAVA_HOME=$(/usr/libexec/java_home -v 11)
+export APP_JAVA_HOME=$(/usr/libexec/java_home -v 11)
+export PATH="/usr/local/opt/openjdk@11/bin:$PATH"
+export CPPFLAGS="-I/usr/local/opt/openjdk@11/include"
 # java configuration end
 
 # android configuration

@@ -21,6 +21,7 @@ HOMEBREW_PACKAGES=(
   hashicorp/tap/vault
   kubectl
   mas
+  openjdk@11
   pinentry-mac
   starship
   stripe/stripe-cli/stripe
@@ -42,6 +43,9 @@ curl -fsSL https://get.pnpm.io/install.sh | sh -
 
 echo "📦 Instaling Node.js..."
 pnpm env use --global lts
+
+echo "📦 Instaling Java..."
+sudo ln -sfn /usr/local/opt/openjdk@11/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk-11.jdk
 
 echo "📰 Tapping fonts..."
 brew tap homebrew/cask-fonts
