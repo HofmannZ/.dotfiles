@@ -1,8 +1,8 @@
 #!/usr/bin/env zsh
 
 # folders
-export WORKSPACE="$HOME/Projects"
-export DOTFILES="$HOME/.dotfiles"
+export WORKSPACE="${HOME}/Projects"
+export DOTFILES="${HOME}/.dotfiles"
 # folders end
 
 # editor
@@ -15,13 +15,13 @@ export TZ=UTC
 # timezone end
 
 # zsh
-export HISTFILE="$HOME/.zhistory" # History filepath
-export HISTSIZE=10000             # Maximum events for internal history
-export SAVEHIST=10000             # Maximum events in history file
+export HISTFILE="${HOME}/.zhistory" # History filepath
+export HISTSIZE=10000               # Maximum events for internal history
+export SAVEHIST=10000               # Maximum events in history file
 # zsh end
 
 # homebrew
-export PATH="/usr/local/sbin:$PATH"
+export PATH="/usr/local/sbin:${PATH}"
 # homebrew end
 
 # gpg
@@ -29,8 +29,8 @@ export GPG_TTY=$(tty)
 # gpg end
 
 # pnpm
-export PNPM_HOME="$HOME/Library/pnpm"
-export PATH="$PNPM_HOME:$PATH"
+export PNPM_HOME="${HOME}/Library/pnpm"
+export PATH="${PNPM_HOME}:${PATH}"
 # pnpm end
 
 # google cloud sdk
@@ -41,20 +41,20 @@ export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 # java configuration
 export JAVA_HOME=$(/usr/libexec/java_home -v 11)
 export APP_JAVA_HOME=$(/usr/libexec/java_home -v 11)
-export PATH="/usr/local/opt/openjdk@11/bin:$PATH"
+export PATH="/usr/local/opt/openjdk@11/bin:${PATH}"
 export CPPFLAGS="-I/usr/local/opt/openjdk@11/include"
 # java configuration end
 
 # android configuration
 export ANDROID_HOME=~/Library/Android/sdk
-export PATH=$PATH:$ANDROID_HOME/build-tools
-export PATH=$PATH:$ANDROID_HOME/platform-tools
-export PATH=$PATH:$ANDROID_HOME/tools
-export PATH=$PATH:$ANDROID_HOME/tools/bin/
+export PATH="${PATH}:${ANDROID_HOME}/build-tools"
+export PATH="${PATH}:${ANDROID_HOME}/platform-tools"
+export PATH="${PATH}:${ANDROID_HOME}/tools"
+export PATH="${PATH}:${ANDROID_HOME}/tools/bin/"
 # android configuration end
 
 # ruby - need to make sure that use the homebrew ruby, not the system one
-export PATH="/usr/local/opt/ruby/bin:$PATH"
+export PATH="/usr/local/opt/ruby/bin:${PATH}"
 # ruby end
 
 # colors
