@@ -4,7 +4,7 @@ echo "🗂 Creating folders..."
 [[ ! -d ~/Projects ]] && mkdir ~/Projects
 [[ ! -d ~/Projects/github.com ]] && mkdir ~/Projects/github.com
 
-if test ! $(which brew); then
+if [[ -z "$(which brew)" ]]; then
   echo "🍺 Installing Homebrew..."
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
