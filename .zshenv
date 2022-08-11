@@ -57,6 +57,10 @@ export PATH="${PATH}:${ANDROID_HOME}/tools/bin/"
 export PATH="/usr/local/opt/ruby/bin:${PATH}"
 # ruby end
 
+# dart
+export PATH="${PATH}:${HOME}/.pub-cache/bin"
+# dart end
+
 # colors
 export DEFAULT_COLOR="\033[39m"
 export RED_COLOR="\\033[91m"
