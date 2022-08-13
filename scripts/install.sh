@@ -62,6 +62,7 @@ HOMEBREW_CASKS=(
   font-fira-code
   google-chrome
   google-cloud-sdk
+  google-drive
   keybase
   raspberry-pi-imager
   tableplus
