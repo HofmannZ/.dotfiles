@@ -58,6 +58,7 @@ HOMEBREW_CASKS=(
   bloomrpc
   cloudflare-warp
   docker
+  figma
   flutter
   font-fira-code
   google-chrome
