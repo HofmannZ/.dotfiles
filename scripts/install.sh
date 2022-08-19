@@ -83,6 +83,7 @@ source ~/.zshrc
 
 echo "🔎 Configuring Google Cloud SDK..."
 gcloud components install gke-gcloud-auth-plugin
+$(gcloud info --format="value(basic.python_location)") -m pip install numpy
 
 echo "🔑 Configuring GPG..."
 mkdir ~/.gnupg
