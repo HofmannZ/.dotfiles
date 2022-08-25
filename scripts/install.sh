@@ -21,8 +21,10 @@ HOMEBREW_PACKAGES=(
   hashicorp/tap/vault
   kubectl
   mas
+  node
   openjdk@11
   pinentry-mac
+  pnpm
   starship
   stripe/stripe-cli/stripe
   zsh
@@ -37,9 +39,6 @@ git config --global user.name "Zino Hofmann"
 git config --global user.email "zino@hofmann.amsterdam"
 git config --global credential.helper osxkeychain
 git config --global color.ui auto
-
-echo "📦 Instaling PNPM..."
-curl -fsSL https://get.pnpm.io/install.sh | sh -
 
 echo "📦 Instaling Node.js..."
 pnpm env use --global lts
