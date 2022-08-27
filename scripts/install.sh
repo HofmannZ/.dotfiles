@@ -12,6 +12,7 @@ fi
 echo "📦 Installing Homebrew packages..."
 HOMEBREW_PACKAGES=(
   cloudflared
+  gh
   git
   gnupg
   hashicorp/tap/consul
