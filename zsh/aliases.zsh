@@ -23,6 +23,7 @@ alias ....='cd ../../..'
 
 alias cdh='cd ~/Projects/github.com/HofmannZ'
 alias cdz='cd ~/Projects/github.com/zino-hofmann'
+alias cde='cd ~/Projects/github.com/expatfile'
 alias cda='cd ~/Projects/github.com/Stichting-Adriaan-van-Royen'
 
 # grep
