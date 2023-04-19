@@ -14,6 +14,6 @@ echo "📋 Updating Homebrew..."
 brewup
 
 echo "📋 Updating Node.js..."
-pnpm env use --global lts
+nvm install --lts
 
 echo "✅ All done!"

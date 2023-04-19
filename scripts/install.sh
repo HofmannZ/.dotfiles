@@ -1,4 +1,5 @@
 #!/usr/bin/env zsh
+-e
 
 echo "🗂 Creating folders..."
 [[ ! -d ~/Projects ]] && mkdir ~/Projects
@@ -11,21 +12,23 @@ fi
 
 echo "📦 Installing Homebrew packages..."
 HOMEBREW_PACKAGES=(
-  cloudflared
-  gh
+  bufbuild/buf/buf
   git
   gnupg
-  hashicorp/tap/consul
-  hashicorp/tap/nomad
+  #  hashicorp/tap/consul
+  #  hashicorp/tap/nomad
   hashicorp/tap/packer
   hashicorp/tap/terraform
-  hashicorp/tap/vault
-  kubectl
+  #  hashicorp/tap/vault
+  kubernetes-cli
   mas
-  node
+  # node
+  nvm
+  openjdk
   openjdk@11
   pinentry-mac
   pnpm
+  redis
   starship
   stripe/stripe-cli/stripe
   zsh
@@ -42,7 +45,7 @@ git config --global credential.helper osxkeychain
 git config --global color.ui auto
 
 echo "📦 Instaling Node.js..."
-pnpm env use --global lts
+nvm install --lts
 
 echo "📦 Instaling Java..."
 sudo ln -sfn /usr/local/opt/openjdk@11/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk-11.jdk
@@ -65,7 +68,7 @@ HOMEBREW_CASKS=(
   google-cloud-sdk
   google-drive
   keybase
-  raspberry-pi-imager
+  #  raspberry-pi-imager
   tableplus
   transmission
   visual-studio-code

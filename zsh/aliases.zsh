@@ -34,7 +34,9 @@ alias pni='pnpm install'
 alias pnd='pnpm dev'
 alias pns='pnpm start'
 alias pnx='(){ pnpm dlx $@; }'
-alias nv='(){ pnpm env use --global $1; }' # usage: 'nv 16' or 'nv lts'
+
+# nvm
+alias nv='(){ nvm use $1; }' # usage: 'nv 16' or 'nv lts'
 
 # yarn
 alias yd='yarn dev'
