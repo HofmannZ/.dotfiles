@@ -41,8 +41,8 @@ export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 # java configuration
 export JAVA_HOME=$(/usr/libexec/java_home -v 11)
 export APP_JAVA_HOME=$(/usr/libexec/java_home -v 11)
-export PATH="/usr/local/opt/openjdk@11/bin:${PATH}"
-export CPPFLAGS="-I/usr/local/opt/openjdk@11/include"
+export PATH="/opt/homebrew/opt/openjdk@11/bin:$PATH"
+export CPPFLAGS="-I/opt/homebrew/opt/openjdk@11/include"
 # java configuration end
 
 # android configuration

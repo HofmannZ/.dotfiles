@@ -48,7 +48,7 @@ echo "📦 Instaling Node.js..."
 nvm install --lts
 
 echo "📦 Instaling Java..."
-sudo ln -sfn /usr/local/opt/openjdk@11/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk-11.jdk
+sudo ln -sfn /opt/homebrew/opt/openjdk@11/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk-11.jdk
 
 echo "📰 Tapping fonts..."
 brew tap homebrew/cask-fonts
