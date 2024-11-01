@@ -13,21 +13,19 @@ fi
 echo "📦 Installing Homebrew packages..."
 HOMEBREW_PACKAGES=(
   bufbuild/buf/buf
+  fzf
   git
   gnupg
-  #  hashicorp/tap/consul
-  #  hashicorp/tap/nomad
+  # hashicorp/tap/consul
+  # hashicorp/tap/nomad
   hashicorp/tap/packer
   hashicorp/tap/terraform
-  #  hashicorp/tap/vault
+  # hashicorp/tap/vault
   kubernetes-cli
   mas
-  # node
-  nvm
   openjdk
   openjdk@11
   pinentry-mac
-  pnpm
   redis
   starship
   stripe/stripe-cli/stripe
@@ -44,8 +42,11 @@ git config --global user.email "zino@hofmann.amsterdam"
 git config --global credential.helper osxkeychain
 git config --global color.ui auto
 
+echo "📦 Instaling Pnpm..."
+curl -fsSL https://get.pnpm.io/install.sh | sh -
+
 echo "📦 Instaling Node.js..."
-nvm install --lts
+pnpm env use --global lts
 
 echo "📦 Instaling Java..."
 sudo ln -sfn /opt/homebrew/opt/openjdk@11/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk-11.jdk
@@ -59,7 +60,6 @@ HOMEBREW_CASKS=(
   android-studio
   balenaetcher
   bloomrpc
-  cloudflare-warp
   docker
   figma
   flutter
@@ -68,7 +68,7 @@ HOMEBREW_CASKS=(
   google-cloud-sdk
   google-drive
   keybase
-  #  raspberry-pi-imager
+  raspberry-pi-imager
   tableplus
   transmission
   visual-studio-code

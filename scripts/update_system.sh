@@ -13,7 +13,10 @@ mas upgrade
 echo "📋 Updating Homebrew..."
 brewup
 
+echo "📋 Updating Pnpm..."
+pnpm self-update
+
 echo "📋 Updating Node.js..."
-nvm install --lts
+pnpm env use --global lts
 
 echo "✅ All done!"
