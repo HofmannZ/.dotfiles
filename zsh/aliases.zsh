@@ -24,7 +24,6 @@ alias ....='cd ../../..'
 alias cdh='cd ~/Projects/github.com/HofmannZ'
 alias cdz='cd ~/Projects/github.com/zino-hofmann'
 alias cde='cd ~/Projects/github.com/expatfile'
-alias cda='cd ~/Projects/github.com/Stichting-Adriaan-van-Royen'
 
 # grep
 alias grep='grep --color=auto'
@@ -37,7 +36,3 @@ alias pnx='(){ pnpm dlx $@; }'
 
 # nvm
 alias nv='(){ nvm use $1; }' # usage: 'nv 16' or 'nv lts'
-
-# yarn
-alias yd='yarn dev'
-alias ys='yarn start'

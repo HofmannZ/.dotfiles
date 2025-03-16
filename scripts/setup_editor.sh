@@ -12,5 +12,4 @@ code --install-extension streetsidesoftware.code-spell-checker
 code --install-extension wayou.vscode-todo-highlight
 code --install-extension wix.vscode-import-cost
 code --install-extension wmaurer.change-case
-code --install-extension zxh404.vscode-proto3
 code --install-extension Tyriar.sort-lines

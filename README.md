@@ -18,12 +18,6 @@ Run the `install.sh` script list this:
 ./scripts/install.sh
 ```
 
-Next, sign into the App Store app and run:
-
-```sh
-./scripts/setup_mac_apps.sh
-```
-
 In VS code press `Command + Shift + P` and search for install `code` in path.
 
 Next, you can configure some extensions:
@@ -32,19 +26,11 @@ Next, you can configure some extensions:
 ./scripts/setup_editor.sh
 ```
 
-Then, setup Keybase providing chained proof. Once setup, find the public PGP fingerprint by running:
+Then, run the gpg setup script providing the PGP fingerprint:
 
 ```sh
-keybase pgp list
+./scripts/setup_gpg.sh
 ```
-
-(optional) Run the gpg setup script providing the PGP fingerprint:
-
-```sh
-./scripts/setup_gpg.sh 74432C545A2B88C97E7A02548EE0CAC87C95D82F
-```
-
-Yeah, thats my [public PGP fingerprint](https://keybase.io/hofmannz), check it out on Keybase.
 
 That's it 🚀!
 

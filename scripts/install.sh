@@ -12,23 +12,17 @@ fi
 
 echo "📦 Installing Homebrew packages..."
 HOMEBREW_PACKAGES=(
-  bufbuild/buf/buf
+  buf
   fzf
+  gh
   git
   gnupg
-  # hashicorp/tap/consul
-  # hashicorp/tap/nomad
-  hashicorp/tap/packer
-  hashicorp/tap/terraform
-  # hashicorp/tap/vault
-  kubernetes-cli
-  mas
   openjdk
   openjdk@11
   pinentry-mac
   redis
+  sequoia-sq
   starship
-  stripe/stripe-cli/stripe
   zsh
   zsh-autosuggestions
   zsh-completions
@@ -58,21 +52,17 @@ echo "📦 Installing casks..."
 HOMEBREW_CASKS=(
   adobe-creative-cloud
   android-studio
-  balenaetcher
-  bloomrpc
+  chatgpt
   docker
   figma
   flutter
   font-fira-code
   google-chrome
   google-cloud-sdk
-  google-drive
-  keybase
-  raspberry-pi-imager
+  kreya
   tableplus
-  transmission
   visual-studio-code
-  vlc
+  zed
 )
 brew install --cask ${HOMEBREW_CASKS[@]}
 

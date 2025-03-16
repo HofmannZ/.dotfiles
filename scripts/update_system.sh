@@ -7,9 +7,6 @@ git pull
 dotup
 cd $CURRRENT_DIR
 
-echo "📋 Updating Mac apps..."
-mas upgrade
-
 echo "📋 Updating Homebrew..."
 brewup
 
