@@ -12,6 +12,7 @@ fi
 
 echo "📦 Installing Homebrew packages..."
 HOMEBREW_PACKAGES=(
+  bash
   buf
   fzf
   gh
