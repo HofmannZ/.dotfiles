@@ -1,0 +1,3 @@
+# Copy to ~/.config/dotfiles/fontawesome and set your token.
+# Do not commit the real file.
+export FONT_AWESOME_PACKAGE_TOKEN=

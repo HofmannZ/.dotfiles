@@ -11,8 +11,8 @@ if (
   exit 1
 fi
 
-git config --global user.signingkey $KEY_ID
+git config --global user.signingkey "$KEY_ID"
 git config --global commit.gpgsign true
-git config --global gpg.program $(which gpg)
+git config --global gpg.program "$(command -v gpg)"
 
-gpg --armor --export $KEY_ID
+gpg --armor --export "$KEY_ID"

@@ -1,13 +1,13 @@
 #!/usr/bin/env zsh
 
 # dotfiles
-alias dotup='. ~/.dotfiles/scripts/update.sh'
+alias dotup='. $DOTFILES/scripts/update.sh'
 
 # homebrew
 alias brewup='brew update; brew upgrade; brew cleanup; brew doctor'
 
 # system
-alias sysup='. ~/.dotfiles/scripts/update_system.sh'
+alias sysup='. $DOTFILES/scripts/update_system.sh'
 
 # kubernetes
 alias kap='kubectl apply -f'
@@ -20,6 +20,7 @@ alias ls='ls -G'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
+alias d='dirs -v'           # Directory stack (use cd ~N to jump)
 
 alias cdh='cd ~/Projects/github.com/HofmannZ'
 alias cdz='cd ~/Projects/github.com/zino-hofmann'

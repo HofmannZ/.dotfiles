@@ -1,5 +1,7 @@
 #!/usr/bin/env zsh
 
+setopt NO_BEEP              # Do not beep on error.
+setopt HIST_REDUCE_BLANKS   # Remove extra blanks from history lines.
 setopt EXTENDED_HISTORY     # Write the history file in the ':start:elapsed;command' format.
 setopt SHARE_HISTORY        # Share history between all sessions.
 setopt HIST_IGNORE_DUPS     # Do not record an event that was just recorded again.

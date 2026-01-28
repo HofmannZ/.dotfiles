@@ -1,11 +1,7 @@
 #!/usr/bin/env zsh
 
 echo "📋 Updating dotfiles..."
-CURRRENT_DIR=$(pwd)
-cd $DOTFILES
-git pull
-dotup
-cd $CURRRENT_DIR
+(cd "$DOTFILES" && git pull && dotup)
 
 echo "📋 Updating Homebrew..."
 brewup

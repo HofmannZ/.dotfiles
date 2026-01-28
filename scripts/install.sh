@@ -1,75 +1,45 @@
 #!/usr/bin/env zsh
--e
+set -e
+
+DOTFILES="$(cd "$(dirname "$0")/.." && pwd)"
 
 echo "🗂 Creating folders..."
 [[ ! -d ~/Projects ]] && mkdir ~/Projects
 [[ ! -d ~/Projects/github.com ]] && mkdir ~/Projects/github.com
 
-if [[ -z "$(which brew)" ]]; then
+if ! command -v brew &>/dev/null; then
   echo "🍺 Installing Homebrew..."
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
+[[ -x /opt/homebrew/bin/brew ]] && eval "$(/opt/homebrew/bin/brew shellenv)"
 
-echo "📦 Installing Homebrew packages..."
-HOMEBREW_PACKAGES=(
-  bash
-  buf
-  fzf
-  gh
-  git
-  gnupg
-  openjdk
-  openjdk@11
-  pinentry-mac
-  redis
-  sequoia-sq
-  starship
-  zsh
-  zsh-autosuggestions
-  zsh-completions
-  zsh-syntax-highlighting
-)
-brew install ${HOMEBREW_PACKAGES[@]}
+echo "📦 Installing Homebrew packages and casks..."
+brew bundle install --file="$DOTFILES/Brewfile"
 
 echo "📎 Configuring Git..."
-git config --global user.name "Zino Hofmann"
-git config --global user.email "zino@hofmann.amsterdam"
-git config --global credential.helper osxkeychain
-git config --global color.ui auto
+mkdir -p ~/.config/git
+cp "$DOTFILES/config/git/config" ~/.config/git/config
+git config --global include.path "$HOME/.config/git/config"
+# Identity (user.name, user.email) is set by ./scripts/setup_config.sh or manually
 
-echo "📦 Instaling Pnpm..."
+echo "📦 Installing Pnpm..."
 curl -fsSL https://get.pnpm.io/install.sh | sh -
+export PNPM_HOME="${HOME}/Library/pnpm"
+export PATH="${PNPM_HOME}:${PATH}"
 
-echo "📦 Instaling Node.js..."
+echo "📦 Installing Node.js..."
 pnpm env use --global lts
 
-echo "📦 Instaling Java..."
-sudo ln -sfn /opt/homebrew/opt/openjdk@11/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk-11.jdk
-
-echo "📰 Tapping fonts..."
-brew tap homebrew/cask-fonts
-
-echo "📦 Installing casks..."
-HOMEBREW_CASKS=(
-  adobe-creative-cloud
-  android-studio
-  chatgpt
-  docker
-  figma
-  flutter
-  font-fira-code
-  google-chrome
-  google-cloud-sdk
-  kreya
-  tableplus
-  visual-studio-code
-  zed
-)
-brew install --cask ${HOMEBREW_CASKS[@]}
+echo "📦 Installing Java..."
+sudo ln -sfn "$(brew --prefix)/opt/openjdk@11/libexec/openjdk.jdk" /Library/Java/JavaVirtualMachines/openjdk-11.jdk
 
 echo "📂 Copying ZSH config..."
-cp .zshenv ~/.zshenv
-cp .zshrc ~/.zshrc
+cp "$DOTFILES/.zshenv" ~/.zshenv
+cp "$DOTFILES/.zshrc" ~/.zshrc
+
+echo "📂 Linking Starship config..."
+mkdir -p ~/.config
+ln -sf "$DOTFILES/config/starship.toml" ~/.config/starship.toml
 
 echo "💾 Source ZSH config..."
 source ~/.zshenv

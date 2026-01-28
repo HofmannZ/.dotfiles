@@ -1,0 +1,5 @@
+# Shared Git config (versioned). Identity is set via setup_config.sh or ~/.config/dotfiles/git-identity.
+[credential]
+  helper = osxkeychain
+[color]
+  ui = auto

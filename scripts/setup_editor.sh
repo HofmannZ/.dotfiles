@@ -1,5 +1,10 @@
 #!/usr/bin/env zsh
 
+command -v code &>/dev/null || {
+  echo "Run 'Shell Command: Install code in PATH' in VS Code first."
+  exit 1
+}
+
 echo "🎨 Configuring default editor..."
 code --install-extension apollographql.vscode-apollo
 code --install-extension dart-code.dart-code
