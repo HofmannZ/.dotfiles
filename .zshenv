@@ -20,6 +20,10 @@ export HISTSIZE=10000               # Maximum events for internal history
 export SAVEHIST=10000               # Maximum events in history file
 # zsh end
 
+# local bin
+export PATH="$HOME/.local/bin:$PATH"
+# local bin end
+
 # homebrew (Apple Silicon)
 [[ -d /opt/homebrew/bin ]] && export PATH="/opt/homebrew/bin:${PATH}"
 [[ -d /opt/homebrew/sbin ]] && export PATH="/opt/homebrew/sbin:${PATH}"
