@@ -10,6 +10,6 @@ echo "📋 Updating Pnpm..."
 pnpm self-update
 
 echo "📋 Updating Node.js..."
-pnpm env use --global lts
+pnpm runtime set node lts -g
 
 echo "✅ All done!"
