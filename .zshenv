@@ -35,7 +35,6 @@ export GPG_TTY=$(tty 2>/dev/null)
 
 # pnpm
 export PNPM_HOME="${HOME}/Library/pnpm"
-export PATH="${PNPM_HOME}:${PATH}"
 case ":$PATH:" in
   *":$PNPM_HOME/bin:"*) ;;
   *) export PATH="$PNPM_HOME/bin:$PATH" ;;
