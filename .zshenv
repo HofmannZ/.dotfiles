@@ -1,5 +1,8 @@
 #!/usr/bin/env zsh
 
+# Keep PATH entries unique when this file is sourced more than once.
+typeset -U path PATH
+
 # folders
 export WORKSPACE="${HOME}/Projects"
 export DOTFILES="${HOME}/.dotfiles"

@@ -35,6 +35,7 @@ sudo ln -sfn "$(brew --prefix)/opt/openjdk@11/libexec/openjdk.jdk" /Library/Java
 
 echo "📂 Copying ZSH config..."
 cp "$DOTFILES/.zshenv" ~/.zshenv
+cp "$DOTFILES/.zprofile" ~/.zprofile
 cp "$DOTFILES/.zshrc" ~/.zshrc
 
 echo "📂 Linking Starship config..."
@@ -43,6 +44,7 @@ ln -sf "$DOTFILES/config/starship.toml" ~/.config/starship.toml
 
 echo "💾 Source ZSH config..."
 source ~/.zshenv
+source ~/.zprofile
 source ~/.zshrc
 
 echo "🔎 Configuring Google Cloud SDK..."
