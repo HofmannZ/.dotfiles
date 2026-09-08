@@ -1,85 +1,76 @@
-# Dotfiles
+# Dotfiles 🏡
 
-Your machine, your rules. Backup, restore, and sync preferences and settings—Brewfile, Zsh/git/starship config, GPG, editors. **Tested on macOS (Apple Silicon).**
+Your machine, your rules. My everyday macOS setup: a comfy shell, development tools, and a home for the little things. Built for Apple Silicon, with defaults doing most of the work.
 
-## What you get ✨
+## The good stuff ✨
 
-The good stuff:
+- **Shell:** Zsh, Antidote + Zephyr, and Starship.
+- **Development:** Node LTS, pnpm for daily work, and Bun for the adventures. Ruby and Java are here too.
+- **Agent wrangling:** [Herdr](https://herdr.dev/docs/install/) keeps the agent shells together.
+- **Apps:** Ghostty, Zed, Docker, Google Cloud CLI, and friends. The `Brewfile` is the full guest list.
 
-- **Shell:** Zsh, Starship prompt, fzf, zsh-autosuggestions, zsh-syntax-highlighting
-- **Dev:** Git, gh, pnpm + Node (LTS), Ruby, Java 11; Flutter/Dart and Android tooling via casks
-- **Editors:** VS Code and Zed (plus Fira Code); extensions via `setup_editor.sh`
-- **Infra and tools:** Docker, Google Cloud SDK, GPG (signed commits), Redis; TablePlus, Kreya, etc.
+## Make yourself at home 🚀
 
-## Setup 🚀
-
-Five steps. You've got this.
-
-**1. Clone** 📥
+Clone the repo:
 
 ```sh
-cd ~
-git clone https://github.com/HofmannZ/.dotfiles.git
-cd .dotfiles
+git clone https://github.com/HofmannZ/.dotfiles.git ~/.dotfiles
+cd ~/.dotfiles
 ```
 
-**2. Create your config (first time only)** ⚙️
-
-Quick chat with your dotfiles—run the interactive script so it knows who you are before install:
+Add your personal details:
 
 ```sh
 ./scripts/setup_config.sh
 ```
 
-It creates `~/.config/dotfiles` and prompts for Git name/email, optional Font Awesome token, and optional EDITOR (vim/code/zed). Do not commit the contents of `~/.config/dotfiles`; they are loaded by `.zshenv` when present.
+This asks for Git identity, an optional Font Awesome token, and your editor. Private settings live in `~/.config/dotfiles` and stay out of Git.
 
-**3. Install** 📦
+Give the `Brewfile` a look, then install:
 
 ```sh
 ./scripts/install.sh
 ```
 
-The big one. Brewfile, `.zshenv`/`.zshrc`, Starship, Git, Pnpm/Node, Java, gcloud, GPG, macOS defaults. Grab a coffee ☕ if you want.
+Time for a coffee ☕. This installs packages and apps, links configs, registers Java 11, and sets up GPG pinentry and the GKE authentication plugin. It also shows hidden files in Finder and dims hidden apps in the Dock.
 
-**4. VS Code** ✏️
+Open a new terminal when it finishes. Antidote downloads your plugins on the first launch.
 
-In VS Code: `Command + Shift + P` → run **Shell Command: Install 'code' command in PATH**. Then install extensions:
+## Everything in its place 🧹
 
-```sh
-./scripts/setup_editor.sh
-```
+- `.zshenv` — shared environment variables and private settings.
+- `.zprofile` — Homebrew, SDK paths, and login setup.
+- `.zshrc` — plugins, aliases, completions, and the prompt.
+- `.zsh_plugins.txt` — the plugin list; Zephyr handles its own defaults.
+- `config/` — Git and Starship settings.
+- `scripts/` — setup and maintenance.
 
-**5. GPG (optional)** 🔑
+Configs are symlinked into `~` and `~/.config`. Existing files are backed up beside the originals with a `.backup.*` suffix. To restore one, remove its symlink and move the backup back into place.
 
-When you have a key and want signed commits:
+Node, pnpm, and Bun are all managed through Homebrew. Node uses `node@24`, the current LTS line, with its binaries first on the shell's search path. Homebrew updates it within that major version; moving to the next LTS means updating the version in `Brewfile`, `.zprofile`, and `.zshrc`.
 
-```sh
-./scripts/setup_gpg.sh <key-id>
-```
+Flutter, Shorebird, and the Android SDK use their usual local paths; install those SDKs separately.
 
-That's it. Go build something. 🎉
-
-## Keeping the system up to date 🔄
-
-From anywhere:
+## Keep it fresh 🍃
 
 ```sh
-sysup
+dotup             # Link configs, then open a new terminal
+brewup            # Zephyr's Homebrew update, upgrade, and cleanup
+antidote update   # Refresh shell plugins
+sysup             # Pull dotfiles, refresh the Brewfile packages and plugins
 ```
 
-Dotfiles are copied, not symlinked. After you pull changes, run `dotup` to load the latest Zsh config into your shell.
+`sysup` uses a fast-forward-only pull and stops if a step fails. Symlinked edits take effect in new shells; `dotup` is also available directly as `./scripts/update.sh`.
 
-## Flutter setup 📱
+Coming from the old setup? Zephyr now manages history with its defaults; your old `~/.zhistory` stays on disk. The separate pnpm/Node installer is gone, so open a fresh login shell after updating.
 
-1. Run: `sudo xcode-select --switch /Applications/Xcode.app/Contents/Developer; sudo xcodebuild -runFirstLaunch; sudo xcodebuild -license`
-2. Run: `sudo gem install cocoapods`
-3. Launch Android Studio, install the SDK command-line tools, set up an AVD
-4. Run: `flutter doctor --android-licenses`
+## Signed, sealed, delivered 🔑
 
-## Troubleshooting 🔧
-
-If gcloud suggests installing NumPy for tunnel performance:
+For optional GPG commit signing:
 
 ```sh
-$(gcloud info --format="value(basic.python_location)") -m pip install numpy
+./scripts/create_gpg.sh                   # If you need a key
+./scripts/setup_gpg.sh <key-fingerprint>
 ```
+
+The setup script enables signing and prints your public key for your Git host. Existing GPG agent settings are kept.

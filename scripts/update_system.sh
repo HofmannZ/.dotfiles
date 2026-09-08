@@ -1,15 +1,21 @@
 #!/usr/bin/env zsh
+set -e
 
-echo "📋 Updating dotfiles..."
-(cd "$DOTFILES" && git pull && dotup)
+DOTFILES="$(cd "$(dirname "$0")/.." && pwd)"
+eval "$(/opt/homebrew/bin/brew shellenv zsh)"
 
-echo "📋 Updating Homebrew..."
-brewup
+print -r -- '📂 Updating dotfiles...'
+git -C "$DOTFILES" pull --ff-only
+zsh "$DOTFILES/scripts/update.sh"
 
-echo "📋 Updating Pnpm..."
-pnpm self-update
+print -r -- '🍺 Updating Homebrew packages...'
+brew update
+brew bundle install --file="$DOTFILES/Brewfile"
+brew cleanup
 
-echo "📋 Updating Node.js..."
-pnpm runtime set node lts -g
+print -r -- '🐚 Updating shell plugins...'
+source "$HOMEBREW_PREFIX/opt/antidote/share/antidote/antidote.zsh"
+antidote update --bundles
 
-echo "✅ All done!"
+brew doctor
+print -r -- '✨ All done. Open a new terminal to pick up the changes.'

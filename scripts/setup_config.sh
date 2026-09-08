@@ -1,66 +1,46 @@
 #!/usr/bin/env zsh
+set -e
+umask 077
 
-DOTFILES="$(cd "$(dirname "$0")/.." && pwd)"
-CONFIG_DIR="${HOME}/.config/dotfiles"
-CREATED=()
+config_dir="$HOME/.config/dotfiles"
+mkdir -p "$config_dir"
+chmod 700 "$config_dir"
+print -r -- "Private config lives in $config_dir. Answer n or leave blank to skip."
 
-mkdir -p "$CONFIG_DIR"
-
-echo "Create private config files under ${CONFIG_DIR}. Leave blank or answer n to skip.\n"
-
-# Font Awesome
-read "?Set up Font Awesome package token? (y/n) " REPLY
-if [[ "$REPLY" =~ ^[yY] ]]; then
-  read -s "?Paste token (input hidden): " TOKEN
-  echo
-  if [[ -n "$TOKEN" ]]; then
-    echo "export FONT_AWESOME_PACKAGE_TOKEN=$TOKEN" > "$CONFIG_DIR/fontawesome"
-    CREATED+=("$CONFIG_DIR/fontawesome")
+read -r 'reply?Set up Font Awesome package token? (y/n) '
+if [[ "$reply" == [yY]* ]]; then
+  read -rs 'token?Paste token (input hidden): '
+  print
+  if [[ -n "$token" ]]; then
+    # Shell-quote the value so special characters remain data when sourced.
+    printf 'export FONT_AWESOME_PACKAGE_TOKEN=%s\n' "${(qq)token}" > "$config_dir/fontawesome"
+    chmod 600 "$config_dir/fontawesome"
+    unset token
   fi
 fi
 
-# Git identity (option b: run git config directly)
-read "?Set up Git user.name and user.email? (y/n) " REPLY
-if [[ "$REPLY" =~ ^[yY] ]]; then
-  read "?Full name: " GIT_NAME
-  read "?Email: " GIT_EMAIL
-  if [[ -n "$GIT_NAME" && -n "$GIT_EMAIL" ]]; then
-    git config --global user.name "$GIT_NAME"
-    git config --global user.email "$GIT_EMAIL"
-    CREATED+=("git config user.name, user.email")
+read -r 'reply?Set up Git user.name and user.email? (y/n) '
+if [[ "$reply" == [yY]* ]]; then
+  read -r 'git_name?Full name: '
+  read -r 'git_email?Email: '
+  if [[ -n "$git_name" && -n "$git_email" ]]; then
+    git config --global user.name "$git_name"
+    git config --global user.email "$git_email"
   fi
 fi
 
-# Editor
-read "?Set EDITOR/VISUAL for git/cron? (vim/code/zed/skip) " REPLY
-case "$REPLY" in
-  vim)
-    EDITOR_CMD="vim"
-    VISUAL_CMD="vim"
-    ;;
-  code)
-    EDITOR_CMD="code -w"
-    VISUAL_CMD="code -w"
-    ;;
-  zed)
-    EDITOR_CMD="zed -w"
-    VISUAL_CMD="zed -w"
-    ;;
-  *) ;;
+read -r 'reply?Set EDITOR/VISUAL? (vim/code/zed/skip) '
+editor_cmd=""
+case "$reply" in
+  vim) editor_cmd=vim ;;
+  code) editor_cmd='code -w' ;;
+  zed) editor_cmd='zed -w' ;;
 esac
-if [[ -n "$EDITOR_CMD" ]]; then
+if [[ -n "$editor_cmd" ]]; then
   {
-    echo "export EDITOR=\"$EDITOR_CMD\""
-    echo "export VISUAL=\"$VISUAL_CMD\""
-  } > "$CONFIG_DIR/editor"
-  CREATED+=("$CONFIG_DIR/editor")
+    printf 'export EDITOR=%s\n' "${(qq)editor_cmd}"
+    printf 'export VISUAL=%s\n' "${(qq)editor_cmd}"
+  } > "$config_dir/editor"
+  chmod 600 "$config_dir/editor"
 fi
-
-echo
-if (( ${#CREATED[@]} )); then
-  echo "Created:"
-  printf '  - %s\n' "${CREATED[@]}"
-  echo "\nDo not commit the contents of ~/.config/dotfiles."
-else
-  echo "Nothing created."
-fi
+print -r -- 'Done. Private files stay outside the repository.'

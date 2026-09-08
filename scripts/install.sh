@@ -3,62 +3,39 @@ set -e
 
 DOTFILES="$(cd "$(dirname "$0")/.." && pwd)"
 
-echo "🗂 Creating folders..."
-[[ ! -d ~/Projects ]] && mkdir ~/Projects
-[[ ! -d ~/Projects/github.com ]] && mkdir ~/Projects/github.com
-
-if ! command -v brew &>/dev/null; then
-  echo "🍺 Installing Homebrew..."
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+mkdir -p "$HOME/Projects/github.com"
+if [[ ! -x /opt/homebrew/bin/brew ]]; then
+  print -r -- '🍺 Installing Homebrew...'
+  # Capture the download first so a failed request cannot look like a successful install.
+  installer="$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  /bin/bash -c "$installer"
 fi
-[[ -x /opt/homebrew/bin/brew ]] && eval "$(/opt/homebrew/bin/brew shellenv)"
+eval "$(/opt/homebrew/bin/brew shellenv zsh)"
 
-echo "📦 Installing Homebrew packages and casks..."
+print -r -- '📦 Installing packages and apps...'
 brew bundle install --file="$DOTFILES/Brewfile"
 
-echo "📎 Configuring Git..."
-mkdir -p ~/.config/git
-cp "$DOTFILES/config/git/config" ~/.config/git/config
-git config --global include.path "$HOME/.config/git/config"
-# Identity (user.name, user.email) is set by ./scripts/setup_config.sh or manually
+zsh "$DOTFILES/scripts/update.sh"
 
-echo "📦 Installing Pnpm..."
-curl -fsSL https://get.pnpm.io/install.sh | sh -
-export PNPM_HOME="${HOME}/Library/pnpm"
-export PATH="${PNPM_HOME}:${PATH}"
+print -r -- '☕ Registering Java 11...'
+sudo mkdir -p /Library/Java/JavaVirtualMachines
+sudo ln -sfn "$HOMEBREW_PREFIX/opt/openjdk@11/libexec/openjdk.jdk" /Library/Java/JavaVirtualMachines/openjdk-11.jdk
 
-echo "📦 Installing Node.js..."
-pnpm env use --global lts
+print -r -- '☁️ Installing the GKE authentication plugin...'
+gcloud components install gke-gcloud-auth-plugin --quiet
 
-echo "📦 Installing Java..."
-sudo ln -sfn "$(brew --prefix)/opt/openjdk@11/libexec/openjdk.jdk" /Library/Java/JavaVirtualMachines/openjdk-11.jdk
+print -r -- '🔑 Configuring GPG pinentry...'
+gnupg_home="${GNUPGHOME:-$HOME/.gnupg}"
+mkdir -p "$gnupg_home"
+chmod 700 "$gnupg_home"
+# Preserve existing agent settings, including a user's chosen pinentry program.
+if ! /usr/bin/grep -Eq '^[[:space:]]*pinentry-program[[:space:]]' "$gnupg_home/gpg-agent.conf" 2>/dev/null; then
+  (umask 077; printf '\npinentry-program %s/bin/pinentry-mac\n' "$HOMEBREW_PREFIX" >> "$gnupg_home/gpg-agent.conf")
+fi
+gpgconf --reload gpg-agent
 
-echo "📂 Copying ZSH config..."
-cp "$DOTFILES/.zshenv" ~/.zshenv
-cp "$DOTFILES/.zshrc" ~/.zshrc
+print -r -- '🖥️ Configuring macOS...'
+defaults write com.apple.finder AppleShowAllFiles -bool true
+defaults write com.apple.dock showhidden -bool true
 
-echo "📂 Linking Starship config..."
-mkdir -p ~/.config
-ln -sf "$DOTFILES/config/starship.toml" ~/.config/starship.toml
-
-echo "💾 Source ZSH config..."
-source ~/.zshenv
-source ~/.zshrc
-
-echo "🔎 Configuring Google Cloud SDK..."
-gcloud components install gke-gcloud-auth-plugin
-$(gcloud info --format="value(basic.python_location)") -m pip install numpy
-
-echo "🔑 Configuring GPG..."
-mkdir ~/.gnupg
-chown -R $(whoami) ~/.gnupg/
-find ~/.gnupg -type f -exec chmod 600 {} \;
-find ~/.gnupg -type d -exec chmod 700 {} \;
-echo "pinentry-program $(brew --prefix)/bin/pinentry-mac" >~/.gnupg/gpg-agent.conf
-echo RELOADAGENT | gpg-connect-agent
-
-echo "🖥 Configuring MacOS..."
-defaults write com.apple.finder AppleShowAllFiles -bool true # Show hidden files.
-defaults write com.apple.Dock showhidden -bool true          # Dim hidden app icons in the Dock.
-
-echo "\n🚀 ${GREEN_COLOR}Done!${DEFAULT_COLOR}"
+print -r -- '✨ All set. Open a new terminal or run: exec zsh -l'
