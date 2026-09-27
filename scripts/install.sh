@@ -17,6 +17,13 @@ brew bundle install --file="$DOTFILES/Brewfile"
 
 zsh "$DOTFILES/scripts/update.sh"
 
+if [[ ! -x "$HOME/.cargo/bin/rustup" ]]; then
+  print -r -- '🦀 Installing Rust...'
+  installer="$(curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs)"
+  # .zprofile puts Cargo on the path, so rustup must not edit the linked shell files.
+  sh -c "$installer" rustup-init -y --no-modify-path
+fi
+
 print -r -- '☕ Registering Java 11...'
 sudo mkdir -p /Library/Java/JavaVirtualMachines
 sudo ln -sfn "$HOMEBREW_PREFIX/opt/openjdk@11/libexec/openjdk.jdk" /Library/Java/JavaVirtualMachines/openjdk-11.jdk

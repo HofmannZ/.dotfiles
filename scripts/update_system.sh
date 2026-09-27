@@ -10,8 +10,13 @@ zsh "$DOTFILES/scripts/update.sh"
 
 print -r -- '🍺 Updating Homebrew packages...'
 brew update
-brew bundle install --file="$DOTFILES/Brewfile"
+brew upgrade
 brew cleanup
+
+if [[ -x "$HOME/.cargo/bin/rustup" ]]; then
+  print -r -- '🦀 Updating Rust...'
+  "$HOME/.cargo/bin/rustup" update
+fi
 
 print -r -- '🐚 Updating shell plugins...'
 source "$HOMEBREW_PREFIX/opt/antidote/share/antidote/antidote.zsh"

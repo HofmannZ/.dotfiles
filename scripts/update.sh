@@ -28,4 +28,4 @@ if ! git config --global --get-all include.path | grep -Fxq "$HOME/.config/git/c
   git config --global --add include.path "$HOME/.config/git/config"
 fi
 
-print -r -- '✨ Ready. Open a new terminal or run: exec zsh -l'
+print -r -- '✨ Ready.'

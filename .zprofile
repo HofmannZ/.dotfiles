@@ -18,8 +18,13 @@ path=(
   "$HOMEBREW_PREFIX/opt/openjdk@11/bin"
   "$WORKSPACE/flutter/bin"
   "$HOME/.shorebird/bin"
+  "$HOME/.cargo/bin"
   $path
   "$ANDROID_HOME/cmdline-tools/latest/bin"
   "$ANDROID_HOME/platform-tools"
   "$HOME/.pub-cache/bin"
 )
+
+# Added by OrbStack: command-line tools and integration
+# This won't be added again if you remove it.
+source ~/.orbstack/shell/init.zsh 2>/dev/null || :

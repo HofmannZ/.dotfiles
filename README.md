@@ -5,9 +5,9 @@ Your machine, your rules. My everyday macOS setup: a comfy shell, development to
 ## The good stuff ✨
 
 - **Shell:** Zsh, Antidote + Zephyr, and Starship.
-- **Development:** Node LTS, pnpm for daily work, and Bun for the adventures. Ruby and Java are here too.
+- **Development:** Node LTS, pnpm for daily work, and Bun for the adventures. Ruby, Java, and Rust are here too.
 - **Agent wrangling:** [Herdr](https://herdr.dev/docs/install/) keeps the agent shells together.
-- **Apps:** Ghostty, Zed, Docker, Google Cloud CLI, and friends. The `Brewfile` is the full guest list.
+- **Apps:** Ghostty, Zed, OrbStack, Google Cloud CLI, and friends. The `Brewfile` is the full guest list.
 
 ## Make yourself at home 🚀
 
@@ -32,7 +32,7 @@ Give the `Brewfile` a look, then install:
 ./scripts/install.sh
 ```
 
-Time for a coffee ☕. This installs packages and apps, links configs, registers Java 11, and sets up GPG pinentry and the GKE authentication plugin. It also shows hidden files in Finder and dims hidden apps in the Dock.
+Time for a coffee ☕. This installs packages and apps, links configs, installs Rust, registers Java 11, and sets up GPG pinentry and the GKE authentication plugin. It also shows hidden files in Finder and dims hidden apps in the Dock.
 
 Open a new terminal when it finishes. Antidote downloads your plugins on the first launch.
 
@@ -49,6 +49,8 @@ Configs are symlinked into `~` and `~/.config`. Existing files are backed up bes
 
 Node, pnpm, and Bun are all managed through Homebrew. Node uses `node@24`, the current LTS line, with its binaries first on the shell's search path. Homebrew updates it within that major version; moving to the next LTS means updating the version in `Brewfile`, `.zprofile`, and `.zshrc`.
 
+Rust comes from the official rustup installer rather than Homebrew. `.zprofile` puts `~/.cargo/bin` on the path, and the installer leaves your shell files alone. `.zshrc` generates the `rustup` and `cargo` completions and refreshes them when rustup updates itself.
+
 Flutter, Shorebird, and the Android SDK use their usual local paths; install those SDKs separately.
 
 ## Keep it fresh 🍃
@@ -57,7 +59,7 @@ Flutter, Shorebird, and the Android SDK use their usual local paths; install tho
 dotup             # Link configs, then open a new terminal
 brewup            # Zephyr's Homebrew update, upgrade, and cleanup
 antidote update   # Refresh shell plugins
-sysup             # Pull dotfiles, refresh the Brewfile packages and plugins
+sysup             # Pull dotfiles, upgrade Homebrew packages, Rust, and plugins
 ```
 
 `sysup` uses a fast-forward-only pull and stops if a step fails. Symlinked edits take effect in new shells; `dotup` is also available directly as `./scripts/update.sh`.
