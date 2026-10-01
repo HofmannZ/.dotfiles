@@ -49,6 +49,8 @@ Configs are symlinked into `~` and `~/.config`. Existing files are backed up bes
 
 Node, pnpm, and Bun are all managed through Homebrew. Node uses `node@24`, the current LTS line, with its binaries first on the shell's search path. Homebrew updates it within that major version; moving to the next LTS means updating the version in `Brewfile`, `.zprofile`, and `.zshrc`.
 
+Global Bun packages go in `~/.bun`. `.zshenv` sets `BUN_INSTALL` so they don't end up in `~/.cache`, and `.zprofile` adds `~/.bun/bin` to the path after Homebrew, so Homebrew's `bun` still comes first.
+
 Rust comes from the official rustup installer rather than Homebrew. `.zprofile` puts `~/.cargo/bin` on the path, and the installer leaves your shell files alone. `.zshrc` generates the `rustup` and `cargo` completions and refreshes them when rustup updates itself.
 
 Flutter, Shorebird, and the Android SDK use their usual local paths; install those SDKs separately.

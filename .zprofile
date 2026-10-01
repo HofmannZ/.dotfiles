@@ -20,6 +20,7 @@ path=(
   "$HOME/.shorebird/bin"
   "$HOME/.cargo/bin"
   $path
+  "$BUN_INSTALL/bin"
   "$ANDROID_HOME/cmdline-tools/latest/bin"
   "$ANDROID_HOME/platform-tools"
   "$HOME/.pub-cache/bin"
